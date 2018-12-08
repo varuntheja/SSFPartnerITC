@@ -7,6 +7,7 @@
     android:weightSum="3">
 
     <LinearLayout
+        android:id="@+id/layout_breakfast"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/dp_10"
@@ -26,20 +27,21 @@
         <TextView
             android:id="@+id/tv_breakfast_to_serve"
             style="@style/TextView_Normal"
-            android:text="To Serve : 50"
+            android:text="To Serve : 00"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_breakfast_served"
             style="@style/TextView_Normal"
-            android:text="Total Served : 30"
+            android:text="Total Served : 00"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout_lunch"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/dp_10"
@@ -59,14 +61,14 @@
         <TextView
             android:id="@+id/tv_lunch_to_serve"
             style="@style/TextView_Normal"
-            android:text="To Serve : 50"
+            android:text="To Serve : 00"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_lunch_served"
             style="@style/TextView_Normal"
-            android:text="Total Served : 30"
+            android:text="Total Served : 00"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
@@ -74,6 +76,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout_dinner"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/dp_10"
@@ -93,14 +96,14 @@
         <TextView
             android:id="@+id/tv_dinner_to_serve"
             style="@style/TextView_Normal"
-            android:text="To Serve : 50"
+            android:text="To Serve : 00"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_dinner_served"
             style="@style/TextView_Normal"
-            android:text="Total Served : 30"
+            android:text="Total Served : 00"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 

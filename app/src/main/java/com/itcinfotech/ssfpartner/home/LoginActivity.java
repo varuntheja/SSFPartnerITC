@@ -1,4 +1,4 @@
-package com.itcinfotech.ssfpartner;
+package com.itcinfotech.ssfpartner.home;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.itcinfotech.ssfpartner.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 

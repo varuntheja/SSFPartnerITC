@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_grey"
     android:orientation="vertical"
-    tools:context="com.itcinfotech.ssfpartner.LoginActivity">
+    tools:context="com.itcinfotech.ssfpartner.home.LoginActivity">
 
     <include layout="@layout/toolbar_custom" />
 
@@ -73,7 +73,8 @@
                     android:paddingBottom="@dimen/dp_5"
                     android:paddingTop="@dimen/dp_5"
                     android:text="Don't have an account, Register Here"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimary"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 

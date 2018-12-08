@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_grey">
@@ -7,5 +7,113 @@
     <include
         layout="@layout/toolbar_custom"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appBarLayout"
+        android:gravity="center_vertical"
+        android:layout_above="@+id/layout_qr_code"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:orientation="vertical"
+            android:background="@android:color/white">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_10"
+                    android:gravity="center"
+                    android:fontFamily="@font/font_lato"
+                    android:hint="Enter Employee PSID"
+                    android:inputType="number"
+                    android:background="@android:color/transparent"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_verify_user"
+                style="@style/Button_Style"
+                android:paddingLeft="@dimen/dp_40"
+                android:paddingRight="@dimen/dp_40"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_gravity="center_horizontal"
+                android:text="Verify"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_user_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_5"
+            android:gravity="center"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/user_status"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:background="@drawable/ic_verified" />
+
+            <ImageView
+                android:id="@+id/img_user"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:background="@drawable/ic_account_grey" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/TextView_Normal"
+                android:text="Varun Theja" />
+
+            <TextView
+                android:id="@+id/tv_psid"
+                style="@style/TextView_Normal"
+                android:maxLines="2"
+                android:text="PSID : 30193"
+                android:textColor="@color/grey_text"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                style="@style/TextView_Normal"
+                android:maxLines="2"
+                android:textColor="@color/grey_text"
+                android:textSize="14sp"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_qr_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:background="@android:color/white"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/iv_scan_qr_code"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_qrcode_scan"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_grey"
-    tools:context="com.itcinfotech.ssfpartner.MainActivity">
+    tools:context="com.itcinfotech.ssfpartner.home.MainActivity">
 
     <include
         layout="@layout/toolbar_custom"/>
