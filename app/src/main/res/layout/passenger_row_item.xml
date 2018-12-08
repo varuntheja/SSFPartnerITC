@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_passenger_name"
+            style="@style/TextView_Normal"
+            android:text="Varun Theja"
+            android:textSize="@dimen/sp_18"/>
+        <TextView
+            android:id="@+id/tv_from_location"
+            style="@style/TextView_Normal"
+            android:text="From : ITC Infotech"
+            android:textColor="@color/grey_text"/>
+
+        <TextView
+            android:id="@+id/tv_to_location"
+            style="@style/TextView_Normal"
+            android:text="From : Jaya Nagar"
+            android:textColor="@color/grey_text"/>
+
+        <TextView
+            style="@style/TextView_Normal"
+            android:text="Phone : 8123868425"
+            android:textColor="@color/grey_text"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@android:color/white"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_5"
+                android:paddingBottom="@dimen/dp_5"
+                android:background="@drawable/bg_green_round_corner"
+                android:text="Call"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_5"
+                android:paddingBottom="@dimen/dp_5"
+                android:background="@drawable/bg_green_round_corner"
+                android:text="Navigate"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_5"
+        android:background="@color/background_grey"/>
+
+</LinearLayout>

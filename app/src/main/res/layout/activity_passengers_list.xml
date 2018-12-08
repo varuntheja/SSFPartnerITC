@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey">
+
+    <include
+        layout="@layout/toolbar"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/passengers_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appBarLayout"/>
+
+    <TextView
+        android:id="@+id/no_passengers"
+        style="@style/TextView_Normal"
+        android:textColor="@color/grey_text"
+        android:layout_centerInParent="true"
+        android:text="No passengers found"
+        android:visibility="gone"/>
+
+</RelativeLayout>

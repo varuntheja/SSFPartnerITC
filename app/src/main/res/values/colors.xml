@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#44006D</color>
+    <color name="colorPrimaryDark">#3d0261</color>
+    <color name="colorAccent">#98CB00</color>
+    <color name="itc_blue">#44006D</color>
+    <color name="itc_green">#98CB00</color>
+    <color name="grey_text">#878686</color>
+    <color name="grey">#A0A0A0</color>
+    <color name="background_grey">#dfdcdc</color>
+    <color name="white_smoke">#F5F5F5</color>
+
+</resources>

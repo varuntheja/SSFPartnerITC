@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">SSF Partner</string>
+    <string name="title_upcomint">UpComing</string>
+    <string name="title_history">History</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="request_cab">Request for Cab</string>
+    <string name="request_food">Request for Food</string>
+    <string name="approvals">Approvals</string>
+    <string name="account">Account</string>
+    <string name="please_wait">Please Wait...</string>
+    <string name="select_journey_type">Select Journey Type</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_ssf_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <string name="default_notification_channel_name" translatable="true">SSF</string>
+    <string name="fcm_message">FCM Message</string>
+
+    <string-array name="journey_type_array">
+        <item>Select Journey Type</item>
+        <item>Today</item>
+        <item>1 Week</item>
+        <item>1 Month</item>
+    </string-array>
+
+    <string-array name="food_request_type_array">
+        <item>Night Shift</item>
+        <item>Weekends</item>
+    </string-array>
+    <string name="title_activity_main">MainActivity</string>
+</resources>
