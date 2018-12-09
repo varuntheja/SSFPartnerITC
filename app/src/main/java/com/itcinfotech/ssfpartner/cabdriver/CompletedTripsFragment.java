@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.itcinfotech.ssfpartner.R;
 import com.itcinfotech.ssfpartner.adapters.CabTripsAdapter;
+import com.itcinfotech.ssfpartner.pojo.cab.UpComingTripsResult;
 import com.itcinfotech.ssfpartner.utility.RecyclerTouchListener;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class CompletedTripsFragment extends Fragment{
     private RecyclerView recyclerView;
     private CabTripsAdapter adapter;
     private TextView mNoOrders;
+    private List<UpComingTripsResult> tripsList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -37,17 +39,12 @@ public class CompletedTripsFragment extends Fragment{
 
         recyclerView = view.findViewById(R.id.recyclerView);
         mNoOrders = view.findViewById(R.id.tv_no_orders);
-        mNoOrders.setVisibility(View.GONE);
+        mNoOrders.setVisibility(View.VISIBLE);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
 
-        List<String> list= new ArrayList<>();
-        list.add("a");
-        list.add("a");
-        list.add("a");
-        list.add("a");
-        adapter = new CabTripsAdapter(getActivity(), list);
+        adapter = new CabTripsAdapter(getActivity(), tripsList);
         recyclerView.setAdapter(adapter);
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new RecyclerTouchListener.ClickListener() {

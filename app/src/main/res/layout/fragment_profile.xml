@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/img_user"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_120"
+            android:background="@drawable/ic_account_grey"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TextView_Normal"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/tv_psid"
+            style="@style/TextView_Normal"
+            android:layout_marginTop="@dimen/dp_5"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/grey_text"/>
+
+        <TextView
+            android:id="@+id/tv_email"
+            style="@style/TextView_Normal"
+            android:layout_marginTop="@dimen/dp_5"
+            android:textColor="@color/grey_text"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_signOut"
+        style="@style/TextView_Normal"
+        android:text="SignOut"
+        android:padding="@dimen/dp_10"
+        android:layout_gravity="center"
+        android:textColor="@android:color/holo_red_light"/>
+
+</LinearLayout>

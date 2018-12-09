@@ -33,7 +33,8 @@
             android:id="@+id/tv_passengers_count"
             style="@style/TextView_Normal"
             android:text="No.Of Passengers : 10"
-            android:textSize="@dimen/sp_18"/>
+            android:textSize="@dimen/sp_18"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <View

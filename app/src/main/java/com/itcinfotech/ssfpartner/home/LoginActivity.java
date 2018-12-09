@@ -10,6 +10,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.itcinfotech.ssfpartner.R;
+import com.itcinfotech.ssfpartner.network.SSFApiClient;
+import com.itcinfotech.ssfpartner.network.SSFApiInterface;
+import com.itcinfotech.ssfpartner.pojo.user.LoginRequest;
+import com.itcinfotech.ssfpartner.pojo.user.LoginResponse;
+import com.itcinfotech.ssfpartner.utility.SessionManager;
+import com.itcinfotech.ssfpartner.utility.Utility;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -22,10 +32,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (SessionManager.getInstance(LoginActivity.this).isLoggedIn()) {
+            loadHomePage();
+        }
+
         setContentView(R.layout.activity_login);
-
         initViews();
-
     }
 
     private void initViews(){
@@ -67,9 +80,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 mTitle.setText("Register");
                 break;
             case R.id.btn_login:
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.anim_two, R.anim.anim_one);
+
+                if(mLoginPhoneNumber.getText().toString().trim().length()>0){
+
+                    if(mLoginPassword.getText().toString().trim().length()>0){
+
+                        if (Utility.isNetworkAvailable(LoginActivity.this)) {
+                            LoginRequest request = new LoginRequest();
+                            request.setPhoneNumber(mLoginPhoneNumber.getText().toString().trim());
+                            request.setPassword(mLoginPassword.getText().toString().trim());
+                            loginUser(request);
+                        } else {
+                            Utility.showDialog(LoginActivity.this, "Please check your internet connection");
+                        }
+                    }
+                    else {
+                        mLoginPassword.setError("Enter password");
+                    }
+                }
+                else {
+                    mLoginPhoneNumber.setError("Enter phone number");
+                }
+
                 break;
             case R.id.btn_register:
                 Intent intent1 = new Intent(LoginActivity.this, MainActivity.class);
@@ -77,5 +109,56 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 overridePendingTransition(R.anim.anim_two, R.anim.anim_one);
                 break;
         }
+    }
+
+    private void loginUser(LoginRequest request) {
+
+        Utility.showProgresDialog(LoginActivity.this);
+        SSFApiInterface apiService = SSFApiClient.getClient().create(SSFApiInterface.class);
+        Call<LoginResponse> call = apiService.loginUser(SessionManager.getInstance(LoginActivity.this).getSessionToken(), request);
+        call.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+
+                Utility.dismessProgresDialog();
+
+                try {
+                    if (response != null && response.isSuccessful()) {
+                        if (response.body() != null && response.body().getIssuccess()) {
+
+                            if(response.body().getResult()!=null){
+                                SessionManager.getInstance(LoginActivity.this).setIsLogin(true);
+                                SessionManager.getInstance(LoginActivity.this).setUserName(response.body().getResult().getUserName());
+                                SessionManager.getInstance(LoginActivity.this).storePSID(response.body().getResult().getID());
+                                SessionManager.getInstance(LoginActivity.this).setIsCabDriver(response.body().getResult().getIsDriver());
+
+                                loadHomePage();
+                            }
+                            else {
+                                Utility.showErrorAlert(LoginActivity.this);
+                            }
+                        }
+                        else {
+                            Utility.showErrorAlert(LoginActivity.this);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Utility.showErrorAlert(LoginActivity.this);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Utility.dismessProgresDialog();
+                Utility.printLog("response error " + t.getMessage());
+            }
+        });
+    }
+
+    private void loadHomePage() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

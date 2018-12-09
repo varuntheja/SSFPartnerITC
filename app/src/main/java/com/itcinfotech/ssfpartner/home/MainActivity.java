@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -13,11 +14,16 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.itcinfotech.ssfpartner.R;
 import com.itcinfotech.ssfpartner.cabdriver.CompletedTripsFragment;
+import com.itcinfotech.ssfpartner.cabdriver.UpComingTripsFragment;
 import com.itcinfotech.ssfpartner.food.FoodDashboardFragment;
+import com.itcinfotech.ssfpartner.food.FoodHistoryFragment;
 import com.itcinfotech.ssfpartner.utility.SessionManager;
 import com.itcinfotech.ssfpartner.utility.Utility;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private TextView mToolbarTitle;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -27,14 +33,30 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
 
-                    loadUpComingTripsFragment();
+                    if(SessionManager.getInstance(MainActivity.this).getIsCabDriver()){
+                        updateTitle("UpComing Trips");
+                        loadUpComingTripsFragment();
+                    }
+                    else {
+                        updateTitle("Order Details");
+                        loadFoodDashboardFragment();
+                    }
 
                     return true;
                 case R.id.navigation_dashboard:
 
-                    loadCompletedTripsFragment();
+                    updateTitle("History");
+                    if(SessionManager.getInstance(MainActivity.this).getIsCabDriver()){
+                        loadCompletedTripsFragment();
+                    }
+                    else {
+                        loadFoodHistoryFragment();
+                    }
+
                     return true;
                 case R.id.navigation_notifications:
+                    updateTitle("Profile");
+                    loadProfileFragment();
                     return true;
             }
             return false;
@@ -46,13 +68,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mToolbarTitle = findViewById(R.id.toolbar_title);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_home);
     }
 
+    private void updateTitle(String title){
+        mToolbarTitle.setText(title);
+    }
+
     private void loadUpComingTripsFragment() {
-        FoodDashboardFragment fragment = new FoodDashboardFragment();
+        UpComingTripsFragment fragment = new UpComingTripsFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.container, fragment);
         ft.commit();
@@ -60,6 +87,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadCompletedTripsFragment() {
         CompletedTripsFragment fragment = new CompletedTripsFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.container, fragment);
+        ft.commit();
+    }
+
+    private void loadFoodDashboardFragment() {
+        FoodDashboardFragment fragment = new FoodDashboardFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.container, fragment);
+        ft.commit();
+    }
+
+    private void loadFoodHistoryFragment() {
+        FoodHistoryFragment fragment = new FoodHistoryFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.container, fragment);
+        ft.commit();
+    }
+
+    private void loadProfileFragment() {
+        ProfileFragment fragment = new ProfileFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.container, fragment);
         ft.commit();

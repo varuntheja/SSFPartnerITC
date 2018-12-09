@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">SSF Partner</string>
+    <string name="title_home">Home</string>
     <string name="title_upcomint">UpComing</string>
     <string name="title_history">History</string>
     <string name="title_notifications">Notifications</string>

@@ -15,6 +15,8 @@ public class SessionManager {
     private static final String PSID = "PSID";
     private static final String IS_MANAGER = "IS_MANAGER";
     private static final String IS_TOKEN_UPDATED = "IS_TOKEN_UPDATED";
+    private static final String IS_CAB_DRIVER = "IS_CAB_DRIVER";
+    private static final String USER_NAME = "USER_NAME";
 
     private static SessionManager instance = null;
 
@@ -82,6 +84,24 @@ public class SessionManager {
 
     public void setTokenUpdated(boolean value2) {
         editor.putBoolean(IS_TOKEN_UPDATED, value2);
+        editor.commit();
+    }
+
+    public boolean getIsCabDriver() {
+        return pref.getBoolean(IS_CAB_DRIVER, false);
+    }
+
+    public void setIsCabDriver(boolean isManager) {
+        editor.putBoolean(IS_CAB_DRIVER, isManager);
+        editor.commit();
+    }
+
+    public String getUserName() {
+        return pref.getString(USER_NAME, null);
+    }
+
+    public void setUserName(String token) {
+        editor.putString(USER_NAME, token);
         editor.commit();
     }
 }
